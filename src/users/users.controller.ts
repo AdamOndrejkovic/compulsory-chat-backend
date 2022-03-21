@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { User } from '../core/user.entity';
@@ -22,5 +22,10 @@ export class UsersController {
   @Post('/login')
   login(@Body() loginUser: LoginUserDto): Promise<User> {
     return this.usersService.login(loginUser.email, loginUser.password);
+  }
+
+  @Get('/users')
+  getUsers(): Promise<User[]> {
+    return this.usersService.getUsers();
   }
 }

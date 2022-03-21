@@ -11,4 +11,8 @@ export class UsersService {
   login(email: string, password: string): Promise<User> {
     return this.userRepository.login(email, password);
   }
+
+  getUsers(): Promise<User[]> {
+    return this.userRepository.getUsers();
+  }
 }
